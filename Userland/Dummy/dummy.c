@@ -1,7 +1,5 @@
-#include "lib.h"
+#include <stdio.h>
 int main(){
-	char *s = "running dummy";
-	sys_write(s);
-	putChar('\n');
-	sys_exit();
+	printf("topkek");
+	exit();
 }

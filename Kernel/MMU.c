@@ -1,10 +1,4 @@
-#include <stdint.h>
-#include <kernel.h>
-
-//PML4: 0x2000
-//1stPDP: 0x3000
-//userPD: 0x10000
-
+#include <MMU.h>
 
 uint64_t getPhysical(){
 	uint64_t u = (uint64_t) userland;

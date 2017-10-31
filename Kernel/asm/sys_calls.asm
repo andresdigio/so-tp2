@@ -30,24 +30,29 @@ load:
 	jmp rdi
 
 sys_callsHandler:
+
+	mov rax,rdi
+	mov rdi, rsi
+	mov rsi, rdx
+	mov rdx, rcx
 	
-	cmp bl, 0x0
+	cmp rax, 0x0
 	je .exit
 	
-	cmp bl, 0x1
+	cmp rax, 0x1
 	je .write
 
-	cmp bl, 0x2
+	cmp rax, 0x2
 	je .read
 
-	cmp bl, 0x3
+	cmp rax, 0x3
 	je .buffer
 
-	cmp bl, 0x4
+	cmp rax, 0x4
 	je .command
 
+
 .write:
-	mov rdi, rax
 	call writeC
 	jmp .finished
 
@@ -56,12 +61,10 @@ sys_callsHandler:
 	jmp .finished
 
 .buffer:
-	mov rdi, rax
 	call bufferC
 	jmp .finished
 
 .command:
-	mov rdi, rax
 	mov QWORD [rsp],commandC
 	jmp .finished
 

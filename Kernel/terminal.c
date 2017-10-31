@@ -1,17 +1,5 @@
-#include <stdint.h>
-#include <lib.h>
-#include <moduleLoader.h>
-#include <naiveConsole.h>
 #include <terminal.h>
-#include <kernel.h>
 
-char  const * commands[] = {"execute", "ls", "help", "clear"};
-char * files[20] = {"dummy", "shell", 0};
-
-uint8_t * const init_Buffer = (uint8_t*) 0x300000;
-uint8_t * kBuffer = (uint8_t*) 0x300000;
-
-uint64_t getPhysical();
 
 int strCmp(const char* s1, const char* s2){
     while(*s1 && (*s1 == *s2)){

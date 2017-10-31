@@ -1,18 +1,12 @@
-#include <stdint.h>
-#include <naiveConsole.h>
-#include <kernel.h>
 #include <sys_calls.h>
-#include <terminal.h>
-#include <asm.h>
 
-void ls();
 void readFile(char*);
 uint64_t toHex(char*);
-void updateCR3();
+
 
 (void *) functions(char *)[] = {readFile,ls,printHelp,ncClear,changeAddress};
 
-void exitC(){
+void exitC(int value){
 	clearBuffer();
 	load(userland,shellModule);
 }	
@@ -35,6 +29,7 @@ void bufferC(char *c){
 
 void commandC(int type, char * arg){
 	functions[type](arg);
+	/*
 	switch(type){
 		case 0:
 			readFile(arg);
@@ -49,10 +44,9 @@ void commandC(int type, char * arg){
 			ncClear();
 			break;
 		case 4:
-
-
-		}
-	}	
+			changeAddress(arg);
+	}
+	*/	
 	clearBuffer();
 	if(type != 3)
 		ncNewline();

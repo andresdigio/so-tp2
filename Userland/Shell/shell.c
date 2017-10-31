@@ -52,7 +52,18 @@ int checkCommand(int index){
 	return strCmp((char *) commands[index],(char *) str);
 }
 
+
+
+//TODO
 int readCommand(){
+	switch(kBuffer){
+		case "ls": execve(1,NULL);
+		case "help": execve(2,NULL);
+		case "clear": execve(3,NULL);
+	}
+
+
+
 	int index = possibleCommand(kBuffer[0]);
 	if(checkCommand(index) == 0){
 		if(index==4)
